@@ -1,0 +1,89 @@
+[
+	{
+		"name": "portfolio",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec dolor ac turpis condimentum suscipit. Integer lectus libero, pretium tincidunt enim quis, egestas iaculis massa. Proin sit amet mi odio. Vivamus maximus massa neque, eget lacinia diam ornare rhoncus. Suspendisse laoreet mattis elit. Phasellus euismod eu libero pharetra ullamcorper. Curabitur tellus neque, accumsan in leo ut, fermentum tristique lorem. Nullam dapibus elit eros, ut congue est efficitur sed. In malesuada lorem sed quam efficitur, ac vehicula sapien euismod. Sed tincidunt nunc in sapien varius, sed fringilla ex mattis. Morbi porta at risus eu varius. Duis luctus tortor ac porta laoreet. Nulla purus mauris, lacinia vel tortor at, tristique eleifend dui. Morbi efficitur feugiat convallis. Etiam ipsum nunc, egestas vel libero eget, convallis venenatis mi. Suspendisse aliquam mauris tortor, sed pretium tellus eleifend sit amet. In hac habitasse platea dictumst. Suspendisse et leo elit. Donec placerat volutpat purus. Pellentesque varius nulla",
+		"createdAt": 1660645108196,
+		"domains": ["gabriel-egli.ch", "www.gabriel-egli.ch"],
+		"gzip": false,
+		"locations": [
+			{
+				"pathname": "/",
+				"res_type": "PROXY_PASS",
+				"res_string": "http://0.0.0.0:3000",
+				"whitelist": [],
+				"blacklist": []
+			}
+		],
+		"status": "OFFLINE",
+		"pre_run_commands": ["npm init -y", "npm i --save"],
+		"start_command": "npm start",
+		"github_link": ""
+	},
+	{
+		"name": "admina page",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec dolor ac turpis condimentum suscipit. Integer lectus libero, pretium tincidunt enim quis, egestas iaculis massa. Proin sit amet mi odio. Vivamus maximus massa neque, eget lacinia diam ornare rhoncus. Suspendisse laoreet mattis elit. Phasellus euismod eu libero pharetra ullamcorper. Curabitur tellus neque, accumsan in leo ut, fermentum tristique lorem. Nullam dapibus elit eros, ut congue est efficitur sed. In malesuada lorem sed quam efficitur, ac vehicula sapien euismod. Sed tincidunt nunc in sapien varius, sed fringilla ex mattis. Morbi porta at risus eu varius. Duis luctus tortor ac porta laoreet. Nulla purus mauris, lacinia vel tortor at, tristique eleifend dui. Morbi efficitur feugiat convallis. Etiam ipsum nunc, egestas vel libero eget, convallis venenatis mi. Suspendisse aliquam mauris tortor, sed pretium tellus eleifend sit amet. In hac habitasse platea dictumst. Suspendisse et leo elit. Donec placerat volutpat purus. Pellentesque varius nulla",
+		"createdAt": 1660645108196,
+		"domains": ["admin.gabriel-egli.ch"],
+		"gzip": true,
+		"locations": [
+			{
+				"pathname": "/",
+				"res_type": "STATIC",
+				"res_string": "/home/ubuntu/server_handler/dist",
+				"whitelist": [],
+				"blacklist": []
+			}
+		],
+		"status": "OFFLINE",
+		"pre_run_commands": ["npm init -y", "npm i --save"],
+		"start_command": "npm start",
+		"github_link": ""
+	},
+	{
+		"name": "stadt land fluss",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec dolor ac turpis condimentum suscipit. Integer lectus libero, pretium tincidunt enim quis, egestas iaculis massa. Proin sit amet mi odio. Vivamus maximus massa neque, eget lacinia diam ornare rhoncus. Suspendisse laoreet mattis elit. Phasellus euismod eu libero pharetra ullamcorper. Curabitur tellus neque, accumsan in leo ut, fermentum tristique lorem. Nullam dapibus elit eros, ut congue est efficitur sed. In malesuada lorem sed quam efficitur, ac vehicula sapien euismod. Sed tincidunt nunc in sapien varius, sed fringilla ex mattis. Morbi porta at risus eu varius. Duis luctus tortor ac porta laoreet. Nulla purus mauris, lacinia vel tortor at, tristique eleifend dui. Morbi efficitur feugiat convallis. Etiam ipsum nunc, egestas vel libero eget, convallis venenatis mi. Suspendisse aliquam mauris tortor, sed pretium tellus eleifend sit amet. In hac habitasse platea dictumst. Suspendisse et leo elit. Donec placerat volutpat purus. Pellentesque varius nulla",
+		"createdAt": 1660645108197,
+		"domains": ["sff-stadtlandfluss.gabriel-egli.ch"],
+		"gzip": false,
+		"locations": [
+			{
+				"pathname": "/",
+				"res_type": "PROXY_PASS",
+				"res_string": "http://0.0.0.0:3002",
+				"whitelist": [],
+				"blacklist": []
+			}
+		],
+		"status": "OFFLINE",
+		"pre_run_commands": ["npm init -y", "npm i --save"],
+		"start_command": "npm start",
+		"github_link": ""
+	},
+	{
+		"name": "anime",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec dolor ac turpis condimentum suscipit. Integer lectus libero, pretium tincidunt enim quis, egestas iaculis massa. Proin sit amet mi odio. Vivamus maximus massa neque, eget lacinia diam ornare rhoncus. Suspendisse laoreet mattis elit. Phasellus euismod eu libero pharetra ullamcorper. Curabitur tellus neque, accumsan in leo ut, fermentum tristique lorem. Nullam dapibus elit eros, ut congue est efficitur sed. In malesuada lorem sed quam efficitur, ac vehicula sapien euismod. Sed tincidunt nunc in sapien varius, sed fringilla ex mattis. Morbi porta at risus eu varius. Duis luctus tortor ac porta laoreet. Nulla purus mauris, lacinia vel tortor at, tristique eleifend dui. Morbi efficitur feugiat convallis. Etiam ipsum nunc, egestas vel libero eget, convallis venenatis mi. Suspendisse aliquam mauris tortor, sed pretium tellus eleifend sit amet. In hac habitasse platea dictumst. Suspendisse et leo elit. Donec placerat volutpat purus. Pellentesque varius nulla",
+		"createdAt": 1660625008111,
+		"domains": ["anime.gabriel-egli.ch"],
+		"gzip": true,
+		"locations": [
+			{
+				"pathname": "/",
+				"res_type": "PROXY_PASS",
+				"res_string": "http://0.0.0.0:3001",
+				"whitelist": [],
+				"blacklist": []
+			},
+			{
+				"pathname": "/api",
+				"res_type": "PROXY_PASS",
+				"res_string": "http://0.0.0.0:8000",
+				"whitelist": [],
+				"blacklist": []
+			}
+		],
+		"status": "OFFLINE",
+		"pre_run_commands": ["npm init -y", "npm i --save"],
+		"start_command": "npm start",
+		"github_link": ""
+	}
+]
