@@ -28,7 +28,7 @@ model Server {
 }
 
 type Location {
-  pathname String @default("/")
+  pathname String @default("/") 
   res_type ResponseType @default(STATIC)
   res_string String
 

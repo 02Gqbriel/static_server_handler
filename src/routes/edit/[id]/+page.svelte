@@ -1,17 +1,10 @@
 <script>
+	/** @type {import('./$types').PageData} */
+	export let data;
+
 	//@ts-nocheck
 	let value = {
-		id: '',
-		name: '',
-		description: '',
-		createdAt: 0,
-		domains: [],
-		gzip: false,
-		locations: [],
-		status: 'OFFLINE',
-		pre_run_commands: [],
-		start_command: '',
-		github_link: ''
+		...data.server
 	};
 
 	let location = {
@@ -94,12 +87,12 @@
 		);
 	}
 
-	async function createServer() {
+	async function editServer() {
 		value.createdAt = Date.now();
 
 		const res = await fetch('/api/server', {
 			body: JSON.stringify(value),
-			method: 'POST',
+			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'
 			}
@@ -116,7 +109,7 @@
 <div
 	class="max-w-screen-md mx-auto flex flex-col gap-3 p-2 h-fit w-full rounded border-2 border-slate-200 bg-slate-100"
 >
-	<h1 class="text-lg">Create Server</h1>
+	<h1 class="text-lg">Edit Server</h1>
 
 	<div class="flex flex-col gap-1">
 		<label for="nameInput" class="text-sm after:content-['*'] after:text-red-500">Name:</label>
@@ -391,7 +384,7 @@
 	</div>
 
 	<button
-		on:click={createServer}
+		on:click={editServer}
 		class="bg-slate-200 active:ring-2 ring-offset-2 border-2 border-slate-300 box-border py-1 px-3 rounded float-right my-2 hover:bg-slate-300"
 		>Add Server</button
 	>

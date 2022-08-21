@@ -43,3 +43,35 @@ export async function POST({ request }) {
 		return new Response('Ups something went wrong', { status: 400 });
 	}
 }
+
+/** @type {import('./$types').RequestHandler} */
+export async function PUT({ request }) {
+	try {
+		const body = await request.json();
+
+		const server = await prisma.server.update({ where:{id: body.id}, data:{...body, id:undefined} });
+	
+		return new Response(JSON.stringify(server));
+	} catch (e) {
+		console.log(e);
+		return new Response('Ups something went wrong', { status: 400 });
+	}
+}
+
+/** @type {import('./$types').RequestHandler} */
+export async function DELETE({ url }) {
+	try {
+		const id = url.searchParams.get('id') ?? -1;
+
+		if(id == -1) return new Response("Missing Query Param: id", {status:400});
+
+		const server = await prisma.server.delete({ where:{id: id} });
+	
+		return new Response(JSON.stringify(server));
+	} catch (e) {
+		console.log(e);
+		return new Response('Ups something went wrong', { status: 400 });
+	}
+}
+
+

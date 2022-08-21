@@ -4,9 +4,9 @@
 	import { page } from '$app/stores';
 </script>
 
-<div class="mx-auto flex justify-center items-center flex-col">
+<div class="mx-auto grow flex justify-center items-center flex-col">
 	<h1 class=" bg-red-200 flex justify-center items-center text-red-600 p-2 rounded-sm w-fit">
-		<span class="font-bold text-8xl mr-1">{$page.status}</span>
+		<span class="font-bold text-red-600 text-8xl mr-1">{$page.status}</span>
 		{$page.error.message}
 	</h1>
 

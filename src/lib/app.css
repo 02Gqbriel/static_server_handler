@@ -4,6 +4,12 @@
 
 @layer base {
 	* {
-		@apply antialiased;
+		@apply antialiased text-slate-700 font-medium transition scroll-smooth;
+	}
+}
+
+@layer utilities {
+	input {
+		@apply accent-slate-800 caret-slate-500;
 	}
 }
