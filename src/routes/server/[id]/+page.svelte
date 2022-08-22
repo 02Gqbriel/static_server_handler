@@ -31,7 +31,7 @@
 		diff -= minutesDifference * 1000 * 60;
 
 		var secondsDifference = Math.floor(diff / 1000);
-
+		//@ts-ignore
 		var leadingZero = (time) => (time < 10 ? '0' + time : time);
 
 		return `${leadingZero(daysDifference)}:${leadingZero(hoursDifference)}:${leadingZero(

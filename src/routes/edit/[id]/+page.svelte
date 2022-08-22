@@ -2,7 +2,6 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	//@ts-nocheck
 	let value = {
 		...data.server
 	};
@@ -29,6 +28,7 @@
 		const input = document.querySelector('input#domainInput');
 
 		if (input != null) {
+			//@ts-ignore
 			const v = input.value;
 
 			if (v == null || v.length == 0) {
@@ -37,11 +37,14 @@
 			}
 
 			value.domains = [...value.domains, v];
+			//@ts-ignore
 			input.value = '';
 		}
 	}
 
+	//@ts-ignore
 	function deleteDomain(event) {
+		//@ts-ignore
 		value.domains = value.domains.filter((v) =>
 			v !== event.path[1].children[0].textContent ? v : undefined
 		);
@@ -51,6 +54,7 @@
 		const input = document.querySelector('input#preInput');
 
 		if (input != null) {
+			//@ts-ignore
 			const v = input.value;
 
 			if (v == null || v.length == 0) {
@@ -59,11 +63,14 @@
 			}
 
 			value.pre_run_commands = [...value.pre_run_commands, v];
+			//@ts-ignore
 			input.value = '';
 		}
 	}
 
+	//@ts-ignore
 	function deletePre(event) {
+		//@ts-ignore
 		value.pre_run_commands = value.pre_run_commands.filter((v) =>
 			v !== event.path[1].children[0].textContent ? v : undefined
 		);
@@ -81,7 +88,9 @@
 		resetLocation();
 	}
 
+	//@ts-ignore
 	function deleteLocation(event) {
+		//@ts-ignore
 		value.locations = value.locations.filter((v) =>
 			v.pathname !== event.path[1].children[0].children[0].textContent ? v : undefined
 		);
@@ -99,7 +108,7 @@
 		});
 
 		if (res.ok) {
-			window.location.reload();
+			window.history.back();
 		} else {
 			alert(await res.text());
 		}
