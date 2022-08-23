@@ -172,7 +172,6 @@
 						</span>
 
 						<div
-							on:click={(e) => e.preventDefault()}
 							class="{dropdowns[index]
 								? 'flex'
 								: 'hidden'} absolute right-0 rounded bg-slate-200 border-2 border-slate-300 p-1 w-max z-20  flex-col"

@@ -1,0 +1,153 @@
+server {
+	server_name gabriel-egli.ch www.gabriel-egli.ch;
+
+	location / {
+		proxy_pass http://0.0.0.0:3000;
+	}
+
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/sigma-crypto.ch/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/sigma-crypto.ch/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+	server_name admin.gabriel-egli.ch;
+
+	gzip on;
+
+	location / {
+		root /home/ubuntu/server_handler/dist;
+	}	
+}
+
+server{
+	server_name sff-stadtlandfluss.gabriel-egli.ch;
+
+	location / {
+		proxy_pass http://0.0.0.0:3002;
+	}
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/sigma-crypto.ch/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/sigma-crypto.ch/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server{
+	server_name anime.gabriel-egli.ch;
+	gzip on;
+	
+	location / {
+		proxy_pass http://0.0.0.0:3001;
+	}
+	
+	location /api {
+		proxy_pass http://0.0.0.0:8000;
+	}
+	
+    listen 443 ssl http2; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/sigma-crypto.ch/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/sigma-crypto.ch/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server {
+    if ($host = www.gabriel-egli.ch) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    if ($host = gabriel-egli.ch) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+	server_name gabriel-egli.ch www.gabriel-egli.ch;
+
+	listen 80;
+	listen [::]:80;
+    return 404; # managed by Certbot
+}
+
+server{
+    if ($host = sigma-crypto.ch) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+	server_name sigma-crypto.ch;
+    return 404; # managed by Certbot
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/sigma-crypto.ch/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/sigma-crypto.ch/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server{
+    if ($host = schweizernazigold.ch) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+	server_name schweizernazigold.ch;
+    listen 80;
+    return 404; # managed by Certbot
+}
+
+server{
+    if ($host = anime.gabriel-egli.ch) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+	server_name anime.gabriel-egli.ch;
+    listen 80;
+    return 404; # managed by Certbot
+}
+
+server{
+    if ($host = api.gabriel-egli.ch) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+	server_name api.gabriel-egli.ch;
+    return 404; # managed by Certbot
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/sigma-crypto.ch/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/sigma-crypto.ch/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
+server{
+    if ($host = sigma-crypto.ch) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+	server_name sigma-crypto.ch;
+    listen 80;
+    return 404; # managed by Certbot
+}
+
+server{
+    if ($host = api.gabriel-egli.ch) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+	server_name api.gabriel-egli.ch;
+    listen 80;
+    return 404; # managed by Certbot
+}
+
+server{
+    if ($host = sff-stadtlandfluss.gabriel-egli.ch) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+	server_name sff-stadtlandfluss.gabriel-egli.ch;
+    listen 80;
+    return 404; # managed by Certbot
+}
