@@ -3,13 +3,14 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 /** @type {import('vite').UserConfig} */
 const config = {
+	
 	plugins: [
 		sveltekit(),
 		VitePWA({
 			injectRegister: 'script',
 			registerType: 'autoUpdate',
-			devOptions: { enabled: true },
-
+			
+			
 			manifest: {
 				name: 'Server Configurations',
 				short_name: 'Configuration',

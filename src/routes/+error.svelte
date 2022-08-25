@@ -2,6 +2,7 @@
 	// @ts-nocheck
 
 	import { page } from '$app/stores';
+	import Image from 'svimg';
 </script>
 
 <div class="mx-auto grow flex justify-center items-center flex-col">
