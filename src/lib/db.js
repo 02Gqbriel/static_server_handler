@@ -1,11 +1,12 @@
-import { readFileSync } from 'fs';
-import type Prisma from '@prisma/client';
-import type { Server } from '@prisma/client';
 
-function parseConfig(): Prisma.Server[] {
-	const config: string = readFileSync('/etc/nginx/sites-enabled/reverse-proxy.conf', {
-		encoding: 'utf-8'
-	});
+import Prisma from '@prisma/client';
+
+/** 
+ * @param {string} config
+ * @return {Prisma.Server[]}
+ */
+function parseConfig(config){
+	console.log("hello")
 
 	let c = config
 		.replaceAll('\t', '')
@@ -20,10 +21,10 @@ function parseConfig(): Prisma.Server[] {
 			const d = new Date();
 			d.setMilliseconds(Date.now());
 
-			const s: Prisma.Server = {
+			/** @type {Prisma.Server} */
+			const s = {
 				id: '',
 				name: '',
-				
 				description: '',
 				createdAt: Date.now(),
 				domains: [],
@@ -32,14 +33,21 @@ function parseConfig(): Prisma.Server[] {
 				status: 'OFFLINE',
 				pre_run_commands: [],
 				start_command: '',
-				github_link: ''
+				github_link: "",
 			};
 
 			i++;
 
 			if (c[i].includes('$host')) break;
 
-			while (c[i] !== '}') {
+			while (!c[i].includes("}")) {
+
+				if (c[i].startsWith('#id')) {
+					
+					s.id = c[i].split(' ')[1];
+					
+				}
+		
 				if (c[i].includes('# managed by Certbot')) {
 					i++;
 					continue;
@@ -58,7 +66,8 @@ function parseConfig(): Prisma.Server[] {
 				}
 
 				if (l[0] == 'location') {
-					const loc: Prisma.Location = {
+					/** @type {Prisma.Location} */
+					const loc = {
 						pathname: l[1],
 						res_type: 'STATIC',
 						res_string: '',
@@ -68,7 +77,7 @@ function parseConfig(): Prisma.Server[] {
 
 					i++;
 
-					while (c[i] !== '}') {
+					while (!c[i].includes('}')) {
 						const splitL = c[i].split(' ');
 
 						if (splitL[0] == 'proxy_pass') {
@@ -104,20 +113,45 @@ function parseConfig(): Prisma.Server[] {
 	return r;
 }
 
-function stringifyConfig(config: Server[]): string {
+/** 
+ * @param {Prisma.Server[]} config
+ * @return {string}
+ */
+function stringifyConfig(config) {
 	let string = '';
 
 	config.forEach((v) => {
-		string += `${v.}`;
+		string += `server {\n\tlisten 80;\n`;
+
+		string += "\t#id " + v.id + "\n";
+
+		string += "\tserver_name " + v.domains.join(" ") + ";\n"
+
+		if (v.gzip) string += "\tgzip on;\n"
+
+		v.locations.forEach((l) => {
+			string += "\tlocation " + l.pathname + " {\n";
+			
+			string += "\t\t" + (l.res_type == "PROXY_PASS" ? "proxy_pass" : "root") + l.res_string + ";\n"
+			
+			string += "\t}\n"
+		})
+
+		string+= "} \n\n"
 	});
+
+	console.log(parseConfig(string))
 
 	return string;
 }
 
-function readConfigFile(): string {
+
+
+/** @return {string} */
+function readConfigFile() {
 	return readFileSync('/etc/nginx/sites-enabled/reverse-proxy.conf', {
 		encoding: 'utf-8'
 	});
 }
 
-export { readConfigFile, parseConfig };
+export { readConfigFile,parseConfig, stringifyConfig };
