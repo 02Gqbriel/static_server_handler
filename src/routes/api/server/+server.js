@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { PrismaClient } from '@prisma/client';
+import { spawn } from "child_process"
 
 
 const prisma = new PrismaClient();
@@ -11,6 +12,12 @@ export async function GET({ url, setHeaders }) {
 	if (id == -1) {
 		throw error(400, 'Missing Query Param: id');
 	}
+
+	// PM2 integration
+
+	const node = spawn("pm2", ["jlist"]);
+
+	node.stdout.on("data", (d) => {console.log(JSON.parse(d.toString()))})
 
 	const res = await prisma.server.findFirst({ where: { id: { equals: id } } });
 
@@ -34,6 +41,8 @@ export async function POST({ request }) {
 
 		if (res === null) {
 			const server = await prisma.server.create({ data: { ...body, id: undefined } });
+
+			
 
 			return new Response(JSON.stringify(server));
 		} else {
