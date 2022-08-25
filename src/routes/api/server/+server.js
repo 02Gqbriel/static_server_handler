@@ -1,14 +1,12 @@
 import { error } from '@sveltejs/kit';
 import { PrismaClient } from '@prisma/client';
-import { stringifyConfig } from '$lib/db';
+
 
 const prisma = new PrismaClient();
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ url, setHeaders }) {
 	const id = url.searchParams.get('id') ?? -1;
-
-	console.log(stringifyConfig(await prisma.server.findMany()))
 
 	if (id == -1) {
 		throw error(400, 'Missing Query Param: id');

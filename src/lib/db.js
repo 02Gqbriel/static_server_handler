@@ -140,8 +140,6 @@ function stringifyConfig(config) {
 		string+= "} \n\n"
 	});
 
-	console.log(parseConfig(string))
-
 	return string;
 }
 
