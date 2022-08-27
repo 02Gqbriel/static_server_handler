@@ -132,7 +132,7 @@ function stringifyConfig(config) {
 		v.locations.forEach((l) => {
 			string += "\tlocation " + l.pathname + " {\n";
 			
-			string += "\t\t" + (l.res_type == "PROXY_PASS" ? "proxy_pass" : "root") + l.res_string + ";\n"
+			string += "\t\t" + (l.res_type == "PROXY_PASS" ? "proxy_pass " : "root ") + l.res_string + ";\n"
 			
 			string += "\t}\n"
 		})
